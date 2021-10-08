@@ -1,1 +1,35 @@
+#include <stdio.h>
+
+int main()
+{
+  printf("Hello CC\n");
+  return 0;
+
+
+}
+Linux Programming
+
+EXAMPLE FOR C
+Execution
+
+
+
+
+
+Final
+16:04 user@user-VirtualBox(10.0.2.15)[~/Desktop] 
+[XD] % gcc hello.c
+16:04 user@user-VirtualBox(10.0.2.15)[~/Desktop] 
+[XD] % gcc hello.c -o hello
+16:05 user@user-VirtualBox(10.0.2.15)[~/Desktop] 
+[XD] % gcc hello.c -o hello.exe
+16:05 user@user-VirtualBox(10.0.2.15)[~/Desktop] 
+[XD] % ./a.out
+Hello CC
+16:05 user@user-VirtualBox(10.0.2.15)[~/Desktop] 
+[XD] % ./hello
+Hello CC
+16:05 user@user-VirtualBox(10.0.2.15)[~/Desktop] 
+[XD] % ./hello.exe
+Hello CC
 
