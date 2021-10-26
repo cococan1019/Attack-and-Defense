@@ -1,0 +1,33 @@
+A: 
+
+首先我透過[Search]>[For String]找到congrats(雖然我對旁邊的IAMFLAG很有興趣)。
+然後再將我反白的s_congrats!_004131a4點右鍵references>show references to s_congrats!_004131a4後再開windows>decompile就可以看到這個function的C語言模式。 
+
+
+
+
+再來我發現該function中觸發使得congrats的messenge的方法是要當bVar為false的情況。 於是我再深入點進去bVar 等於的 FUN_00401000的function中
+
+可以看到該function是在做字串strcmp的比對，到這裡感覺已經很接近答案了。於是我在去看 看strcmp的function 
+到了這邊後，我就有點沒頭緒了。trace code能力偏差......
+B: 
+第二題使用ollvm去觀察混淆後的編碼的不同。 
+以Q2來說，要觀察的是Control Flow Flattening的不同我用我自己的同個c code中的function foo來觀察。以圖片來說，我使用了CFF後，ghidra中的block flow會明顯地有差距，具而體言通 過多個case-swich結構將程序的控制流變成扁平形狀，打破原有的邏輯結構，增加逆向的難 度。並且同個function在ghidra的decompile中也會差距甚大，甚至是原本的機器語言也會有所 不同，以下都使用圖片來作對照。 
+(經過CFF)
+(normal)
+(經過CFF)
+(normal)
+(經過CFF)，不難看出下面同段內容的機器語言的邏輯不同了
+
+(normal) 
+Q3: 
+而至於Bogus control flow(BCF)可以看到，混淆後的程式中加入了一個由不透明謂詞組成的 條件語句，由於混淆器知道他的值，所以可以保證被混淆程式的正確性，執行被混淆程序原本 的編碼，而編譯器和反編譯器都無法對這個表達式進行求值，只能保留此謂詞，達到干擾靜態 分析的目的。 
+以下我也將用截圖來表示不同，先以block flow來展示。
+(經過BCF)可以看出明顯的變複雜 
+(normal) 
+再來是同個function裡面的程式碼
+(經過BCF)
+(normal) 
+最後是看機器語言，也可以看出不同
+(經過BCF)
+(normal)
