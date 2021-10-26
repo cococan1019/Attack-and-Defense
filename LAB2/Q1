@@ -1,0 +1,4 @@
+Q1. The program “a.exe” will ask for a password. If the right password is 
+entered, a congrats message will appear on the screen. Try to use Ghidra (or 
+whatever tools you would like to use) to dissemble a.exe and extract the 
+password and the congrats message. In your answer, please include
